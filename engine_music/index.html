@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="icon" href="engmsc_logo.png">
+        <script src="engmsc.js?v=1.0.0.8"></script>
+        <title>ENGMSC - ELMFER</title>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5142362731269184" crossorigin="anonymous"></script>
+    </head>
+
+    <link rel="stylesheet" href="../project_page_style.css?v=1.0.0.1">
+    <link rel="stylesheet" href="engmsc.css?v=1.0.0.8">
+
+    <body>
+        <main>
+            <div id="banner_background">
+                <img alt="engmsc_banner" src="engmsc_banner.png" class="banner">
+            </div>
+
+            <div style="height: 30px;"></div>
+
+            <section>
+                <h2>About ENGMSC</h2>
+
+                <p>
+                    ENGMSC or Engine Music is a C++ library with an audio architecture that contains 
+                    synthesizers made for engine sound generation.
+                </p>
+
+                <div style="height: 1in;">
+                    <img alt="engmsc-app screenshot" src="3d_waveform.png" 
+                    style="transform: translate(-50%, -50%); height: 150%; top: 30%; left: 50%; position: relative;">
+                </div>
+
+            </section>
+
+            <section>
+                <h2>How it works</h2>
+
+                <p>
+                    We gear-heads may know that an internal combustion engine is simply an air pump. 
+                    It uses valves and pistons to pull and push air through it's intake and exhaust side 
+                    respectively, and combustion from the air/fuel mixture is what propels the engine. Due
+                    to it's nature, an engine does not push air continuously; it rather pushes air in pulses. 
+                    Depending on the number of cylinders and exhaust header configuration, the engine 
+                    produces different notes from one another. For example, a four cylinder Subaru WRX 
+                    with unequal length exhaust headers produces a rumble sound compared to a Honda Civic
+                     with equal length headers.
+                </p>
+
+                <div style="text-align: center;">
+                    <a href="https://bringatrailer.com/listing/2004-subaru-impreza-wrx-sti-7/" target="_blank">
+                        <div style="height: 2.25in; display: inline-block;" class="img_view">
+
+                            <div class="img_tab">
+                                <strong>Subaru WRX @ BringATrailer</strong>
+                            </div>
+                            <img alt="SubaruWRX" src="SubaruWRX.jpg" style="height: 100%;">
+
+                        </div>
+                    </a>
+                    <a href="https://www.pinterest.com/pin/664421751268450465/" target="_blank">
+                        <div style="height: 2.25in; display: inline-block;" class="img_view">
+
+                            <div class="img_tab">
+                                <strong>Honda Civic @ Pinterest</strong>
+                            </div>
+                            <img alt="HondaCivic" src="HondaCivic.jpg" style="height: 100%;">
+
+                        </div>
+                    </a>
+                </div>
+
+                <p>
+                    ENGMSC simulates those pulses. Each pulses' level and tone depends on factors like temperature 
+                    and load, and they are fired for each cylinder. Each cylinders' exhaust length (in ENGMSC, referred 
+                    to exhaust offset) will alter the timing of their pulses, so in combination with the 
+                    engine's speed, it will produce an engine note.
+                </p>
+
+                <div style="height: 1in;">
+                    <img alt="Pulses demo" src="pulses_demo.png" class="img_content">
+                </div>
+            </section>
+
+            <section>
+                <h2>It's purpose</h2>
+
+                <p>
+                    As a gear-head, it's sad to know that eventually all internal combustion 
+                    engines in vehicles will be replaced with boring electric motors. There is great pleasure 
+                    from hearing an engine's roar as you drive, yet electric ones will just give us a little 
+                    whine noise – not that exciting. ENGMSC will provide the concept on practical engine 
+                    sound generation, as it does not require audio recordings. Once you know all the parameters, 
+                    ENGMSC will produce engine sounds that can be used in games and simulations.
+                </p>
+
+                <div>
+                    <a href="https://www.motortrend.com/features/1808-1972-datsun-240z-the-fairest-one-of-all/" target="_blank">
+                        <div style="height: 3in;" class="tab_content">
+
+                            <div class="img_tab">
+                                <strong>Datsun 240z @ MotorTrend</strong>
+                            </div>
+                            <img alt="datusn 240z" src="http://assets.superstreetonline.com/f/167717724.jpg?width=660&height=440" style="height: 100%;">
+
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section>
+                <h2>ENGMSC-App</h2>
+
+                <p>
+                    ENGMSC has a demo; it's called ENGMSC-App. It offers you control of a virtual vehicle, 
+                    and it  will generate its sounds in real-time. ENGMSC-App simulates a vehicle controlled 
+                    by Newtonian physics, for it serves an important role to approximate the engine's 
+                    conditions in order to produce convincing sounds. It is open source on GitHub alongside 
+                    with the ENGMSC library, and it is open to contributions. I was able to compile it for 
+                    Linux (Ubuntu distro), Windows (with both MinGW and Visual Studio), and even for the 
+                    web using Emscripten.
+                </p>
+
+                <div style="height: 3.5in;">
+                    <img alt="engmsc-app screenshot" src="engmsc-app_screenshot.png" class="img_content">
+                </div>
+
+                <p>
+                    For development on the ENGMSC-App to be easier and faster, it uses a couple of libraries. 
+                    The application uses Nanogui for providing a visual interface, GLFW for window creation, 
+                    Iir1 for audio filtering, and Assimp for loading 3D models from files.
+                </p>
+
+                <div style="height: 1in;" class="tab_content">
+                    <a href="https://github.com/elmfrain/engmsc" target="_blank">
+                        <img alt="github link" src="github_link.png" style="height: 100%;" class="link_button">
+                    </a>
+                </div>
+
+                <p>
+                    Give it a test drive on the web! I don't recommend using Firefox (on Windows, Linux seems 
+                    to work fine), for, from my experience, it has poor audio performance.
+                </p>
+
+                <div style="height: 1in;" class="tab_content">
+                    <a href="https://elmfer.com/web-engmsc-app" target="_blank">
+                        <img alt="engmsc-app link" src="engmsc-app_link.png" style="height: 100%" class="link_button">
+                    </a>
+                </div>
+
+                <h4>Controls</h4>
+                <ul>
+                    <li><strong>Spacebar: </strong>Crank the engine</li>
+                    <li><strong>Key Q: </strong> Down-shift</li>
+                    <li><strong>Key E: </strong> Up-shift</li>
+                </ul>
+            </section>
+
+            <div style="height: 2in;"></div>
+        </main>
+
+        <nav>
+            <a href="../index.html"><img alt="elmfer_logo" src="../elmfer_logo.png" class="elmfer_logo"></a>
+            <div id="circle"></div>
+            <img alt="engine_music_logo" src="engmsc_logo.png" class="logo">
+        </nav>
+    </body>
+</html>

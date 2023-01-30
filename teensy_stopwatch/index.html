@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="icon" href="parkour_recorder_logo.png">
+        <script src="teensy_stopwatch.js"></script>
+        <title>Teensy Stopwatch - ELMFER</title>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5142362731269184" crossorigin="anonymous"></script>
+    </head>
+
+    <link rel="stylesheet" href="../project_page_style.css?v=1.0.0.1">
+    <link rel="stylesheet" href="teensy_stopwatch.css?v=4">
+
+    <body>
+        <main>
+            <div id="banner_background">
+                <img alt="teensy_stopwatch_banner" src="teensy_board.png" class="banner">
+            </div>
+
+            <div style="height: 30px;"></div>
+
+            <section>
+                <h2>About Teensy Stopwatch</h2>
+
+                <p>
+                    The Teensy Stopwatch is a DIY device that uses the Teensy 4.0 micro-controller for displaying and running a 
+                    little stopwatch app onto an TFT LCD module, if as if it were a smartphone. 
+                </p>
+
+                <div style="height: 2.5in;">
+                    <img alt="Finished Device" src="finished_device.jpg" class="img_content">
+                </div>
+
+                <ul>
+                    <li>Credits to <a href="https://www.instagram.com/xsxeth/" style="color:#15153F;" target="_blank">xsxeth</a> for taking the photos of this project!</li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h2>How It Works</h2>
+
+                <p>
+                    Since the Teensy 4.0 micro-controller has a powerful ARM Cortex processor with 1 MB of ram, it is totally feasible 
+                    to create a responsive user interface with it.
+                </p>
+
+                <div style="height: 2.25in;">
+                    <img alt="Teensy Board" src="teensy_board.jpg" class="img_content">
+                </div>
+
+                <p>
+                    It has enough memory to store a 320x240 colored image, and this allows the application to buffer the user interface 
+                    into it for faster performance as opposed to writing to the LCD module for every draw command which can be slow. 
+                    In order to send this image data to the LCD to display, it uses the SPI interface. The Teensy micro-controller 
+                    has a hardware accelerated implementation of SPI, therefore, this allows an asynchronous transfer of data to 
+                    the screen without occupying the processor's computational power.
+                </p>
+
+                <div style="text-align: center;">
+                    <img id="img_content" alt="LCD TFT Module" src="lcd_tft_module.jpg" style="height: 2.5in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                    <img id="img_content" alt="SPI Showcase" src="spi_showcase.jpg" style="height: 2.5in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                </div>
+
+                <p>
+                    Nonetheless, implementing an efficient driver for the module is an intimidating task, for the module and SPI interface 
+                    has many technicalities to be aware of in order to use them efficiently. Fortunately, <strong>vindar</strong> from GitHub as already 
+                    developed a sophisticated driver that does all the heavy lifting for us. The only things we need to do is to allocate 
+                    memory for our frame-buffers (images that it is going to display) and to command an update to the driver whenever our 
+                    image is ready for display. This driver has dramatically simplified the development process for this project.
+                </p>
+
+                <div style="text-align: center;">
+                    <a href="https://github.com/vindar/ILI9341_T4" target="_blank">
+                        <div style="height: 2.25in; display: inline-block;" class="img_view">
+
+                            <div class="img_tab">
+                                <strong>ILI9341_T4 by vindar @ GitHub</strong>
+                            </div>
+                            <img alt="Driver Demo" src="https://raw.githubusercontent.com/vindar/ILI9341_T4/main/ILI9341.jpg" style="height: 100%;">
+
+                        </div>
+                    </a>
+                </div>
+
+                <p>
+                    For this project, I've decided to create my own UI code, but user interfacing is not easy, especially if you have to code 
+                    its functionality from scratch. However, from what I learned from modding Minecraft, it can be simplified enough in order 
+                    to not practically reinvent the wheel. What I did is create a module called <code>UIrender</code> that has a list of drawing commands 
+                    that can be executed in the application in order to draw interfaces. The most important commands are, <code>drawQuad</code>, 
+                    <code>drawGradientQuad</code>, <code>drawString</code>, and <code>clear</code>.
+                </p>
+
+                <div>
+                    <h4 style="text-align: center;">UIrender Module Commands</h4>
+                    <ul>
+                        <li><code>drawQuad</code> draws a quad by specifying its boundaries (left, top, right, and bottom) and its color.</li>
+                        <li><code>drawGradientQuad</code> similar to last, but specified with two colors to create a gradient.</li>
+                        <li><code>drawString</code> draws text by specifying the text to display, its position, size, and color. </li>
+                        <li><code>clear</code> clears everything with a specified color; it is used for creating a background.</li>
+                    </ul>
+                </div>
+
+                <h4>Text Rendering</h4>
+
+                <p>
+                    <code>drawString</code> is complicated because it uses many 
+                    textured quads to display text, but how does it exactly work? For this, I give credit to a YouTuber named 
+                    <strong>ThinMatrix</strong>, for he showed a method on how to display text for games without using a game engine.
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=mnIQEQoHHCU" style="color:#15153F;">Check out ThinMatrix's video on text rendering by clicking here!</a>
+                    </li>
+                </ul>
+
+                <p>
+                    We need is an atlas (image texture) of all the glyphs of a font and a list containing positions, offsets, and boundaries 
+                    for all the corresponding glyphs.
+                </p>
+
+                <div style="text-align: center;">
+                    <img id="img_content" alt="Font Atlas Example" src="font_atlas_example.jpg" style="height: 3in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                    <img id="img_content" alt="Glyph Info Example" src="glyph_info_example.jpg" style="height: 3in; max-width: 100%; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                </div>
+
+                <p>
+                    All this data can be extracted from a font by using a program called <strong>Hiero</strong>, and 
+                    the data is then converted into a <code>C array</code> using <strong>Python</strong> so that is can be stored within the source code.
+                </p>
+
+                <div style="height: 4in;">
+                    <img alt="Font Atlas To C Array" src="font_atlas_to_c_array.jpg" class="img_content">
+                </div>
+
+                <p>
+                    With all this 
+                    font data, we can now display glyphs. The first thing the module will do is to split every character in the 
+                    string (of text) into a list of characters. For each character, it then searches from the list extracted from Hiero 
+                    for its width, height, offsets, and its location on the atlas. Each character will then have a quad drawn with its 
+                    glyph texture extracted from the atlas, and then the module will move its cursor by the width of the character drawn. 
+                    This is done to all elements in the list which results into having text drawn.
+                </p>
+
+                <div style="text-align: center;">
+                    <img id="img_content" alt="String To Array" src="string_to_array.jpg" style="height: 1.25in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                    <img id="img_content" alt="Glyph Extraction" src="glyph_extraction.jpg" style="height: 2.25in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                </div>
+
+                <h4>User Input</h4>
+
+                <p>
+                    Now we have a way to display a user interface, but the program needs to be able to respond to inputs. The Teensy 
+                    Stopwatch has a rotary encoder that sends a signal when its knob is rotated or when its switch is pressed, yet due to it's 
+                    “bouncing” tendencies, I used a Debouncer to remove any signal abnormalities in software for input reliability.
+                </p>
+
+                <div style="height: 2.5in;">
+                    <img alt="Rotary Encoder Module" src="rotary_encoder_module.jpg" class="img_content">
+                </div>
+
+                <p>
+                    I created a 
+                    module called <code>Input</code> that polls for input changes every frame. With this module, you can add <code>listeners</code> (code that executes 
+                    from an event), so when the user, for example, presses the switch, the module will execute all the <code>listener</code>s' code that responds 
+                    to a switch press. This event driven system allows you to be able to interact with UI elements, and it simplifies user interactivity 
+                    as opposed to listening signals manually.
+                </p>
+
+                <div style="height: 2.25in;">
+                    <img alt="Input Listener Example" src="input_listener_example.jpg" class="img_content">
+                </div>
+
+                <p>
+                    At last with the modules <code>UIrender</code> and <code>Input</code> written, we can code basic “screens” that the user can use. A <code>screen</code> element should 
+                    be able to respond to input, draw a user interface, and handle any internal logic (e.g. change screen when switch is pressed).
+                </p>
+            </section>
+
+            <section>
+                <h2>How To Use</h2>
+
+                <p>
+                    There are three screens for this project, <code>Select Screen</code>, <code>Stopwatch</code>, and <code>Timer</code>. On upon startup, the user is met 
+                    with the <code>Select Screen</code> screen. The user can choose to use either the stopwatch or the timer functionality.
+                </p>
+
+                <h4>Stopwatch Screen</h4>
+
+                <img alt="Stopwatch Couting" src="stopwatch_counting.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    Using the Stopwatch screen, the user can start the clock by pressing <code>Resume</code> and stop it by pressing either <code>Pause</code> or <code>Reset</code>. 
+                </p>
+                <div style="clear: both;"></div>
+
+                <p></p>
+
+                <img alt="Stopwatch Lap" src="stopwatch_lap.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    While the clock is running, the user can press the <code>Lap</code> button to record the exact time it was pressed.
+                </p>
+                <div style="clear: both;"></div>
+
+                <p></p>
+
+                <img alt="Stopwatch View Laps" src="stopwatch_view_laps.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    Upon stopping the clock, the user can then press the <code>View Laps</code> button; this will allow the user to scroll through all of the 
+                    laps recording showing their time and duration by turning the rotary encoder.
+                </p>
+                <div style="clear: both;"></div>
+
+                <p></p>
+                
+                <img alt="Stopwatch Reset" src="stopwatch_reset.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    Lastly, the user can press the <code>Reset</code> button 
+                    to reset the clock back to zero, and it will also clear the list of laps recorded.
+                </p>
+                <div style="clear: both;"></div>
+
+                <h4>Timer Screen</h4>
+
+                <img alt="Timer Setup" src="timer_setup.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    Using the Timer, the user can set a duration to which the clock will count down from. The user can press 
+                    the <code>Set</code> button to show a menu to set the timer. In this menu, the user can select <code>10m</code>, <code>1m</code>, <code>15s</code>, <code>1s</code>, 
+                    and <code>Done</code>.
+                </p>
+                <p>
+                    The user selects the option and then uses the rotary encoder clockwise or counterclockwise to increment or 
+                    decrement the timer respectively. When done, the user can use another option or press <code>Done</code> to set the timer.
+                </p>
+                <div style="clear: both;"></div>
+
+                <p></p>
+
+                <img alt="Timer Countdown" src="timer_countdown.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    When the clock 
+                    is started by pressing <code>Resume</code>, it will count down until either it is paused or when the clock reaches zero. When the clock reaches zero, 
+                    it will trigger the buzzer on and off every half second until the user presses <code>Stop</code> to which the clock resets to the set duration.
+                </p>
+                <div style="clear: both;"></div>
+
+                <h4>Screen Selection</h4>
+
+                <img alt="Selection Screen" src="selection_screen.jpg" id="img_content" style="height: 2.25in; margin-left: .125in; margin-right: .5in; float: left; clear: both;">
+                <p>
+                    In order to change the functionality while in the <code>Stopwatch</code>, or <code>Timer</code> screen, the user must hold the switch for three seconds until 
+                    the <code>Select Screen</code> screen appears. The user may then select and change the functionality of the stopwatch.
+                </p>
+                <div style="clear: both;"></div>
+            </section>
+
+            <section>
+                <h2>Project Construction</h2>
+
+                <p>
+                    During the development of this project, all the hardware was connected using a breadboard and jumper wires.
+                </p>
+
+                <div style="height: 0.5in;">
+                    <img alt="Project Breadboard" src="project_breadboard.jpg" class="img_content">
+                </div>
+
+                <p>
+                    For the LCD module, I need to be aware that it can perform erratically if their wires connecting to the micro-controller 
+                    is long. This is a result from induction formed when current passes through a wire; induction can reverberate the signal 
+                    because the current cannot be switched on and off reliably at speeds of 30 megahertz (the speed which the module communicates 
+                    with the micro-controller). This problem is mitigated by using short wires and by decreasing the speed in which the module is communicating 
+                    at. Additionally, the LED pin of the module is connected to 5V using a 220 ohm resistor.
+                </p>
+
+                <div style="height: 3in;">
+                    <img alt="LCD Module Breadboard" src="lcd_module_breadboard.jpg" class="img_content">
+                </div>
+
+                <p>
+                    The rest of the components are also connected  to one of the Teensy's pins. For example, the rotary encoder has the A, B, 
+                    and C pins connected to the micro-controller. Furthermore, since the rotary encoder is just a module with three switches 
+                    (they can only open or close a circuit, not send 0v or 3.3v), each input needs to be pulled up to 3.3v with a 1k ohm resistor in 
+                    order for their inputs to be readable to the micro-controller. For the buzzer, the positive pin is connected directly 
+                    to the micro-controller.
+                </p>
+
+                <div style="height: 0.5in;">
+                    <img alt="Other Components Breadboard" src="other_components_breadboard.jpg" class="img_content">
+                </div>
+            
+                <p>
+                    I initially tried to put this project on a perfboard, but unfortunately, it was a mess since making all the necessary connections 
+                    on a tiny space manually made the circuits unreliable. I instead decided to design a custom PCB for this project because 
+                    I could then add a Li-Ion battery to power this project in a compact package. I learned how to use a prototyping program called 
+                    <strong>EasyEDA</strong> to design the PCB for this project.
+                </p>
+
+                <p>
+                    First, I needed to create a schematic of the project by following what 
+                    I did on the breadboard. However, I did not know how to create a circuit for the battery. Fortunately, I found a YouTuber by the 
+                    name of <strong>GreatScott</strong> who has a video showing on how to create a battery circuit. It was a standalone circuit 
+                    originally meant to be used as separate PCB module, but it was easy to implement it with the rest of the project.
+                </p>
+
+                <div style="text-align: center;">
+                    <img id="img_content" alt="Stopwatch Schematic" src="stopwatch_schematic.jpg" style="height: 2in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                    <img id="img_content" alt="Battery Circuit Schematic" src="battery_circuit_schematic.jpg" style="height: 2in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                </div>
+
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=Fj0XuYiE7HU" style="color:#15153F">Check out GreatScott's video about his battery circuit by clicking here!</a></li>
+                </ul>
+
+                <p>
+                    When this 
+                    schematic was finished, I can then import it into a PCB editor within EasyEDA to layout all the components and connect all the circuitry. 
+                    I additionally created a logo for the project onto which it is printed on the back of the PCB because it looks so cool! 
+                </p>
+
+                <div style="text-align: center;">
+                    <img id ="img_content" alt="EasyEDA PCB Front" src="easyeda_pcb_front.jpg" style="height: 3.25in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                    <img id ="img_content" alt="EasyEDA PCB Back" src="easyeda_pcb_back.jpg" style="height: 3.25in; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+                </div>
+
+                <p>
+                    Once I finished designing the PCB, I sent the design to a PCB manufacturer <strong>JLCPCB</strong>. They where able to 
+                    manufacture it in within a week, and it was shipped to my house in about 2 weeks. Lastly, I made a spreadsheet called a BOM containing 
+                    all the components that I am going to install onto the PCB; this was used to order all the materials needed by this project.
+                </p>
+
+                <div style="height: 3in;">
+                    <img alt="Materials Layed Out" src="materials_layed_out.jpg" class="img_content">
+                </div>
+
+                <p>
+                    Assembling the project was a little daunting because I needed to solder small surface mount components (like resistors) which 
+                    can be tricky. Nonetheless, by using some solder flux aided with the soldering process, and, along with the BOM, I successfully assembled the project.
+                    What a thriller!
+                </p>
+
+                <div style="height: 0.5in;">
+                    <img alt="Finished Device 2" src="finished_device_2.jpg" class="img_content">
+                </div>
+
+                <ul>
+                    <li>Just a fun fact, the battery for this project is actually salvaged from an old phone!</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Its Purpose</h2>
+
+                <p>
+                    I have been fascinated on how our computers work after I learned some programming, so naturally, I got curious on how the hardware 
+                    worked. I discovered Arduino, which is a micro-controller programming environment and a manufacturer of some micro-controller 
+                    boards such as the Arduino UNO. Once I got a hold of an Arduino kit, and, after tinkering around with it, this gave me an idea! 
+                </p>
+
+                <p>
+                    I knew I had to try to attempt making a basic app using an embedded system which led me to this project. This journey has taught 
+                    me so much because I had to understand how electronics work, how to design PCB's, how to assemble them, and also knowing the 
+                    limitations of an embedded system (such as limited RAM or computational power). Additionally, since the Arduino programming 
+                    environment uses a C like language, that has also taught me on how to be a better programmer by teaching me exactly what goes 
+                    on behind the scenes such as memory management, compilers, and preprocessing.
+                </p>
+            </section>
+
+            <div style="height: 2in;"></div>
+        </main>
+        <nav>
+            <a href="../"><img alt="elmfer_logo" src="../elmfer_logo.png" class="elmfer_logo"></a>
+            <div id="circle"></div>
+            <img alt="mcauto_logo" src="stopwatch_logo.png" class="logo">
+        </nav>
+
+        <style>
+            #img_viewer
+            {
+                position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3);
+                transition: 120ms; opacity: 0%;
+                pointer-events: none;
+            }
+            #img_viewer_body
+            {
+                position: relative;
+                width: 80%;
+                min-width: 3.5in;
+                background-color: aliceblue;
+                box-shadow: 0px 0px 30px;
+
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+
+                border-radius: 4px;
+
+                overflow: hidden;
+            }
+            #img_viewer_exit_button
+            {
+                display: inline;
+                float: left;
+
+                height: .35in;
+                width: .35in;
+                background-color: darkred;
+                box-shadow: 0px 0px 5px black;
+                color: aliceblue;
+                text-shadow: 0px 0px 5px black;
+                display: grid;
+                place-items: center;
+                font-weight: bolder;
+
+                cursor: pointer;
+            }
+            #img_viewer_title
+            {
+                display: grid;
+                place-items: center;
+                color: aliceblue;
+                font-weight: bold;
+                height: 100%;
+            }
+            #img_viewer_image
+            {
+                max-height: calc(90vh - .35in);
+                max-width: 100%;
+            }
+        </style>
+
+        <div id="img_viewer">
+            <div id="img_viewer_body">
+                <div style="background-image: linear-gradient(to top, rgb(51, 51, 51), rgb(77, 77, 77)); height: .35in; overflow: hidden;">
+                    <div id="img_viewer_exit_button">X</div>
+                    <div id ="img_viewer_title">Unknown</div>
+                </div>
+                <div style="display: grid; place-items: center;">
+                    <img id="img_viewer_image" src="stopwatch_logo.png">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let viewer = document.getElementById("img_viewer");
+            let image = document.getElementById("img_viewer_image");
+            let viewerExitButton = document.querySelector("#img_viewer_exit_button");
+            let images = document.querySelectorAll(".img_content, #img_content");
+            let title = document.getElementById("img_viewer_title");
+
+            images.forEach(i =>
+            {
+                i.addEventListener("click", onImageClick);
+            });
+
+            viewer.addEventListener("click", viewerClose);
+            viewerExitButton.addEventListener("click", viewerClose);
+
+            function viewerClose()
+            {
+                viewer.style.opacity = "0%";
+                viewer.style.pointerEvents = "none";
+            }
+
+            function onImageClick(event)
+            {
+                title.textContent = event.target.alt;
+                image.src = event.target.src;
+                viewer.style.opacity = "100%";
+                viewer.style.pointerEvents = "all";
+            }
+        </script>
+    </body>
+</html>
