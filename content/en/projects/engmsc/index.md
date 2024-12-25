@@ -30,7 +30,7 @@ load, and they are fired for each cylinder. Each cylinders' exhaust length (in E
 exhaust offset) will alter the timing of their pulses, so in combination with the engine's speed, it
 will produce an engine note.
 
-![Pulses Waveform](./images/pulses_demo.webm)
+![Pulses Waveform](./images/pulses_demo.webp)
 
 ## Its Purpose
 
