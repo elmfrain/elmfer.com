@@ -4,6 +4,7 @@ date: 2022-06-29T18:41:23-05:00
 draft: true
 description:
 isStarred: false
+thumbnail: "./images/teensy_board_banner.webp"
 ---
 
 *Revised 25 Dec 2024*
