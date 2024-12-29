@@ -3,6 +3,7 @@ title: "EngMsc - Engine Sound Generation"
 date: 2022-06-29T18:42:10-05:00
 draft: false
 thumbnail: /projects/engmsc/images/engmsc_logo.webp
+banner: /projects/engmsc/images/engmsc_banner.webp
 ---
 
 _Revised 25 Dec 2024_

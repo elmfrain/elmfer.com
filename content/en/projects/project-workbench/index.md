@@ -9,8 +9,6 @@ category: "Electrical Engineering"
 tags: ["led", "lights", "converter", "arduino", "electrical", "voltage", "boost", "buck"]
 ---
 
-![Workbench](./images/workbench.webp)
-
 About a year ago, I wanted to have a workbench in my room so I can work on electrical projects
 without having to sit down or trade desk space on my computer setup. I asked my dad for his opinion
 on how to obtain one without breaking the bank, and he convinced to make one from scratch out of
@@ -269,6 +267,7 @@ and current sensors. Additionally, I found out that many circuits are able to be
 repurposed components sourced from old or unused electronics, and it enabled me to workout my
 creative and logical thinking that helps with problem solving in the future.
 
+![Workbench](./images/workbench.webp)
 ![Workbench view from an angle](./images/workbench_2.webp)
 
 > ### References

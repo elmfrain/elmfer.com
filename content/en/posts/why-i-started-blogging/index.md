@@ -2,9 +2,8 @@
 title: "Why I Started Blogging - Why You Should Start Too"
 date: 2023-11-13T00:40:36-06:00
 draft: false
+banner: "/posts/why-i-started-blogging/images/thumbnail.webp"
 ---
-
-![Thumbnail](./images/thumbnail.webp)
 
 I've created this blogging site to document my journies on my technical projects. However, I regret on not starting it sooner, but at least I am starting now; **it is never too late**. I'll share exactly why I am going through the trouble of starting a blogging site, and I will explain on why new aspiring programmers should start blogging their coding journey as soon as they start their career.
 

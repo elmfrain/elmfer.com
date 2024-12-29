@@ -1,8 +1,18 @@
 {{ define "main" }}
 <div class="wrapper post">
+
+  {{ $bannerSize := "cover" }}
+  {{ if .Params.fitBanner }}
+      {{ $bannerSize = "contain" }}
+  {{ end }}
+
     <main class="page-content" aria-label="Content">
         <article>
+            {{ if .Param "banner" }}
+            <header class="header header-banner" style="background-size: {{ $bannerSize }}; background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%), url({{ .Param "banner" }}), radial-gradient(circle, #7a7a7a, #313131);">
+            {{ else }}
             <header class="header">
+            {{ end }}
                 <h1 class="header-title">{{ .Title }}</h1>
                 {{ $configDateFormat := .Site.Params.dateFormat | default ":date_medium" }}
                 {{ with .Date }}

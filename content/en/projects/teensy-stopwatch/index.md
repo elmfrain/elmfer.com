@@ -4,6 +4,8 @@ date: 2022-06-29T18:41:23-05:00
 draft: true
 description:
 thumbnail: "/projects/teensy-stopwatch/images/finished_device.webp"
+banner: "/projects/teensy-stopwatch/images/teensy_board_banner.webp"
+fitBanner: true
 ---
 
 *Revised 25 Dec 2024*

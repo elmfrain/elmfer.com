@@ -28,6 +28,30 @@ body * {
   image-rendering: optimizeQuality;
 }
 
+.header {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-banner {
+  margin: 0;
+  padding: 10em 1rem 1rem 1rem;
+  mask-image: linear-gradient(0deg, rgba(0,0,0,1) 63%, rgba(0,0,0,0) 100%);
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+
+  .header-title {
+    color: $dark-white;
+  }
+}
+
+@media (max-width: $narrow-size) {
+  .header-banner {
+    width: 100vw;
+    margin-left: -15px;
+  }
+}
+
 .layer {
   grid-column: 1;
   grid-row: 1;

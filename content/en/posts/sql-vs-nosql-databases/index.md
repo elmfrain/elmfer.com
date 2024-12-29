@@ -4,9 +4,8 @@ date: 2023-11-24T00:46:14-06:00
 draft: false
 category: "Web Programming"
 tags: ["backend", "nodejs", "databases", "json"]
+banner: "/posts/sql-vs-nosql-databases/images/banner.webp"
 ---
-
-![Banner](./images/banner.webp)
 
 ## Prelogue
 
