@@ -3,8 +3,7 @@ title: Teensy Stopwatch
 date: 2022-06-29T18:41:23-05:00
 draft: true
 description:
-isStarred: false
-thumbnail: "./images/teensy_board_banner.webp"
+thumbnail: "/projects/teensy-stopwatch/images/finished_device.webp"
 ---
 
 *Revised 25 Dec 2024*

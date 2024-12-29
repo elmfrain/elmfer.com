@@ -2,7 +2,6 @@
 title: "Why I Started Blogging - Why You Should Start Too"
 date: 2023-11-13T00:40:36-06:00
 draft: false
-thumbnail: "/posts/why-i-starting-blogging/images/thumbnail.webp"
 ---
 
 ![Thumbnail](./images/thumbnail.webp)

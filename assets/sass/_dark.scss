@@ -183,6 +183,10 @@
       color: $dark-white;
     }
 
+    .post-item-thumbnail {
+      filter: brightness(1.2);
+    }
+
     .post-item-title {
       a {
         color: $dark-text-base-color;

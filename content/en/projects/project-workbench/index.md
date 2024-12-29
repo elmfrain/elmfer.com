@@ -3,7 +3,8 @@ title: "DIY Workbench & Lighting System"
 date: 2023-12-28T18:53:45-06:00
 draft: false
 
-thumbnail: "/posts/project-workbench/images/workbench_cad.png"
+thumbnail: "/projects/project-workbench/images/workbench.webp"
+banner: "/projects/project-workbench/images/workbench.webp"
 category: "Electrical Engineering"
 tags: ["led", "lights", "converter", "arduino", "electrical", "voltage", "boost", "buck"]
 ---
