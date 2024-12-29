@@ -1,9 +1,37 @@
+@mixin dark-mode {
+  body {
+    background-color: hsl(0, 0, 18) !important;
+    background-blend-mode: multiply;
+  }
+}
+
+body {
+  background-image: url("/images/background.webp");
+  background-color: hsl(0, 0, 80) !important;
+  background-size: cover;
+  image-rendering: pixelated;
+  background-blend-mode: lighten;
+}
+
 .elmfer-banner {
-    display: block;
-    width: 85px;
-    height: 25px;
-    background-image: url("/images/elmfer_banner4.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: block;
+  width: 85px;
+  height: 25px;
+  background: url("/images/elmfer_banner8.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: optimizeQuality;
+}
+
+// support JS disabled environment with media query
+@media (prefers-color-scheme: dark) {
+  // use "light" class to avoid style conflicts in js enabled environment
+  html:not(.light) {
+    @include dark-mode();
+  }
+}
+
+html.dark {
+  @include dark-mode();
 }
