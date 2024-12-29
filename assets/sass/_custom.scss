@@ -8,9 +8,13 @@
 body {
   background-image: url("/images/background.webp");
   background-color: hsl(0, 0, 80) !important;
-  background-size: cover;
+  background-size: 100%;
   image-rendering: pixelated;
   background-blend-mode: lighten;
+}
+
+body * {
+  image-rendering: initial;
 }
 
 .elmfer-banner {
@@ -22,6 +26,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   image-rendering: optimizeQuality;
+}
+
+@media (max-width: 900px) {
+  body {
+    background-size: 900px;
+  }
 }
 
 // support JS disabled environment with media query
