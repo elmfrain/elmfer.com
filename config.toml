@@ -35,7 +35,7 @@ url = '/about/'
 weight = 40
 
 [Languages.en-gb.params]
-sitename = "ELMFER"
+sitename = "Elmfer"
 defaultColor = "dark" # set color mode: dark, light, auto
 # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
 # the default value is set to 'auto'.
@@ -58,9 +58,9 @@ rssFeedDescription = "summary" # available options: 1) summary 2) full
 # By default (or if nothing is specified), summary is used.
 
 [Languages.en-gb.params.author]
-avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
+avatar = "icons/mstile-310x310.png" # put the file in assets folder; also ensure that image has same height and width
 # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-intro = "Awesome hugo blog"
+intro = "Elmfer"
 name = "Fernando Valle"
 description = "A fast, minimalistic Hugo theme with light and dark mode support, for running a personal site or blog."
 

@@ -1,16 +1,24 @@
 // Author
 .author {
-  margin-top: 6.3rem;
-  margin-bottom: 7.2rem;
-  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 3.2rem;
+
+  display: flex;
+  background-color: $fa-light;
+  border-radius: 0.25rem;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0;
 
   @include media-query($on-mobile) {
     margin-bottom: 3em;
   }
 
+  $avatarSize: 1.3in;
+
   .author-avatar {
-    width: 70px;
-    height: 70px;
+    width: $avatarSize;
+    height: $avatarSize;
     border-radius: 100%;
     user-select: none;
     -ms-user-select: none;
@@ -21,9 +29,28 @@
     object-fit: cover;
   }
 
+  .author-avatar-border {
+    margin: -0.5in 0 -0.5in -0.75in;
+    padding: 0.5rem;
+    border-radius: 100%;
+    background-image: url("/images/background.webp");
+    background-attachment: fixed;
+
+    background-color: hsl(0, 0, 87) !important;
+    background-size: 100vw;
+    image-rendering: pixelated;
+    background-blend-mode: soft-light;
+
+    display: inline-block;
+
+    * {
+      image-rendering: initial;
+    }
+  }
+
   .author-name {
     font-size: 1.7em;
-    margin-bottom: 2px;
+    margin: 0px;
   }
 
   .author-bio {
@@ -31,6 +58,18 @@
     opacity: 0.9;
     max-width: 393px;
     line-height: 1.688;
+  }
+}
+
+@mixin dark-mode {
+  .author {
+    background-color: $dark-toc-bg;
+
+    .author-avatar-border {
+      background-image: url("/images/background_lowc.webp");
+      background-color: hsl(0, 0, 18) !important;
+      background-blend-mode: multiply;
+    }
   }
 }
 
@@ -59,7 +98,8 @@
     height: 2in;
     background-size: cover;
     background-position: center;
-    mask-image: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 55%);
+    mask-image: url("/images/right_gradient.webp");
+    mask-size: cover;
     filter: brightness(1.25);
     z-index: -1;
   }
@@ -273,4 +313,16 @@ mark {
   background: #ff0;
   color: #000;
   border-radius: 3px;
+}
+
+// support JS disabled environment with media query
+@media (prefers-color-scheme: dark) {
+  // use "light" class to avoid style conflicts in js enabled environment
+  html:not(.light) {
+    @include dark-mode();
+  }
+}
+
+html.dark {
+  @include dark-mode();
 }

@@ -1,5 +1,6 @@
 @mixin dark-mode {
   body {
+    background-image: url("/images/background_lowc.webp");
     background-color: hsl(0, 0, 18) !important;
     background-blend-mode: multiply;
   }
@@ -7,14 +8,15 @@
 
 body {
   background-image: url("/images/background.webp");
-  background-color: hsl(0, 0, 80) !important;
-  background-size: 100%;
+  background-attachment: fixed;
+  background-color: hsl(0, 0, 87) !important;
+  background-size: 100vw;
   image-rendering: pixelated;
-  background-blend-mode: lighten;
-}
+  background-blend-mode: soft-light;
 
-body * {
-  image-rendering: initial;
+  * {
+    image-rendering: initial;
+  }
 }
 
 .elmfer-banner {
