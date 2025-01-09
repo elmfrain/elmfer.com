@@ -22,6 +22,9 @@
 - id: "footer.disclaimer"
   translation: 'Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.'
 
+- id: "footer.show_splash_screen"
+  translation: '<a href="#splash-screen" id="show-splash-screen">Show splash screen</a>'
+
 ## ERRORS ##
 - id: "errors.404"
   translation: "404 NOT FOUND"

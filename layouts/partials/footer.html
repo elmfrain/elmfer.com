@@ -9,6 +9,9 @@
         © {{ now.Format "2006" }} {{ .Site.Params.author.name }}.
         {{ T "footer.disclaimer" | safeHTML }}
     </small>
+    <small class="footer_copyright">
+      {{ T "footer.show_splash_screen" | safeHTML }}
+    </small>
 </footer>
 
 {{- if .Site.Params.goToTop -}}

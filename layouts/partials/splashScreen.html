@@ -1,0 +1,9 @@
+<video class="intro-vid" autoplay="true" muted="true"></video>
+
+{{ if hugo.IsProduction }}
+{{ $splash_screen_script := resources.Get "js/splashScreen.js" | minify | fingerprint }}
+<script src="{{ $splash_screen_script.RelPermalink }}" integrity="{{ $splash_screen_script.Data.Integrity }}"></script>
+{{ else }}
+{{ $splash_screen_script := resources.Get "js/splashScreen.js" }}
+<script src="{{ $splash_screen_script.RelPermalink }}"></script>
+{{ end}}
