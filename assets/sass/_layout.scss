@@ -8,10 +8,11 @@
   border-radius: 0.25rem;
   gap: 1rem;
   align-items: center;
-  padding: 1rem 1rem 0.5rem 1rem;
+  padding: 0.9rem;
 
   @include media-query($on-desktop) {
     flex-direction: column;
+    padding: 0 1rem 0.45rem 0.9rem;
   }
 
   @include media-query($on-mobile) {
@@ -53,12 +54,16 @@
       image-rendering: initial;
     }
 
+    @include media-query($on-tablet) {
+      --avatarSize: 1.1in;
+    }
+
     @include media-query($on-small) {
       --avatarSize: 0.8in;
     }
 
     @include media-query($on-desktop) {
-      margin: var(--avatarSideMargin) 0 calc(var(--avatarMargin) * 0.5) 0;
+      margin: calc(var(--avatarSize) / -2 - 0.5rem) 0 calc(var(--avatarMargin) * 0.5) 0;
     }
   }
 
