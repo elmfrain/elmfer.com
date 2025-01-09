@@ -1,6 +1,6 @@
 // Author
 .author {
-  margin-top: 0.5rem;
+  margin-top: 7.8em;
   margin-bottom: 3.2rem;
 
   display: flex;
@@ -8,17 +8,23 @@
   border-radius: 0.25rem;
   gap: 1rem;
   align-items: center;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 1rem 1rem 0.5rem 1rem;
+
+  @include media-query($on-desktop) {
+    flex-direction: column;
+  }
 
   @include media-query($on-mobile) {
     margin-bottom: 3em;
   }
 
-  $avatarSize: 1.3in;
+  --avatarSize: 1.3in;
+  --avatarMargin: calc(var(--avatarSize) * -0.3846);
+  --avatarSideMargin: calc(var(--avatarSize) * -0.5769);
 
   .author-avatar {
-    width: $avatarSize;
-    height: $avatarSize;
+    width: var(--avatarSize);
+    height: var(--avatarSize);
     border-radius: 100%;
     user-select: none;
     -ms-user-select: none;
@@ -30,7 +36,7 @@
   }
 
   .author-avatar-border {
-    margin: -0.5in 0 -0.5in -0.75in;
+    margin: var(--avatarMargin) 0 var(--avatarMargin) var(--avatarSideMargin);
     padding: 0.5rem;
     border-radius: 100%;
     background-image: url("/images/background.webp");
@@ -45,6 +51,14 @@
 
     * {
       image-rendering: initial;
+    }
+
+    @include media-query($on-small) {
+      --avatarSize: 0.8in;
+    }
+
+    @include media-query($on-desktop) {
+      margin: var(--avatarSideMargin) 0 calc(var(--avatarMargin) * 0.5) 0;
     }
   }
 
