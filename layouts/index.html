@@ -17,6 +17,7 @@
     {{- partial "header.html" . -}}
     {{- partial "splashScreen.html" . -}}
     <div class="wrapper">
+        {{ partial "projectCarousel.html" . }}
         {{ partial "bio" . }}
         <main aria-label="Content">
             <h3 class="posts-item-note" aria-label="Recent Posts">{{ T "home.recent_posts" }}</h3>
