@@ -62,7 +62,7 @@ avatar = "icons/mstile-310x310.png" # put the file in assets folder; also ensure
 # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
 intro = "Elmfer"
 name = "Fernando Valle"
-description = "A fast, minimalistic Hugo theme with light and dark mode support, for running a personal site or blog."
+description = "A guy who is invested into engineering, led down a path of perpetual learning that cannot be stopped. Fixated on creating projects with unique twists, or even breaking stuff in the interest of figuring out what can be done."
 
 # Allow to override webmanifest options
 [Languages.en-gb.params.webmanifest]
@@ -79,3 +79,7 @@ url = "https://www.youtube.com/@elmfer"
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com/elmfrain"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/elmfer"
