@@ -20,10 +20,20 @@
         {{ partial "projectCarousel.html" . }}
         {{ partial "bio" . }}
         <main aria-label="Content">
+            <h3 class="posts-item-note" aria-label="Projects">{{ T "home.projects" }}</h3>
+            {{/* Show all projects */}}
+            {{ $projectsToShow := where .Site.RegularPages "Type" "projects" }}
+            {{ $projects := $projectsToShow.ByDate.Reverse }}
+            {{ range $projects }}
+            {{ partial "postCard" . }}
+            {{ end }}
+
+            <div style="height:3rem" ></div>
+
             <h3 class="posts-item-note" aria-label="Recent Posts">{{ T "home.recent_posts" }}</h3>
             {{/* Show last 5 posts in reverse date order */}}
-            {{ $pagesToShow := where .Site.RegularPages "Type" "in" site.Params.mainSections }}
-            {{ $posts := $pagesToShow.ByDate.Reverse }}
+            {{ $postsToShow := where .Site.RegularPages "Type" "posts" }}
+            {{ $posts := $postsToShow.ByDate.Reverse }}
             {{ range first 5 $posts }}
             {{ partial "postCard" . }}
             {{ end }}
