@@ -1,6 +1,6 @@
 // Author
 .author {
-  margin-top: 7.8em;
+  margin-top: 0.5em;
   margin-bottom: 3.2rem;
 
   display: flex;
@@ -49,6 +49,7 @@
     background-blend-mode: soft-light;
 
     display: inline-block;
+    z-index: 10;
 
     * {
       image-rendering: initial;
@@ -75,7 +76,7 @@
   .author-bio {
     margin: 0 auto;
     opacity: 0.9;
-    max-width: 393px;
+    max-width: 550px;
     line-height: 1.688;
   }
 }
