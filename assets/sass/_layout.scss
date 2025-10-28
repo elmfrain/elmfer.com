@@ -4,7 +4,7 @@
   margin-bottom: 3.2rem;
 
   display: flex;
-  background-color: $fa-light;
+  background-color: $light;
   border-radius: 0.25rem;
   gap: 1rem;
   align-items: center;
@@ -43,7 +43,7 @@
     background-image: url("/images/background.webp");
     background-attachment: fixed;
 
-    background-color: hsl(0, 0, 87) !important;
+    background-color: hsl(0, 0, 95) !important;
     background-size: 100vw;
     image-rendering: pixelated;
     background-blend-mode: soft-light;
