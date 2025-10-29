@@ -102,3 +102,64 @@ body {
 html.dark {
   @include dark-mode();
 }
+
+// --------- about page specific style --------- //
+
+.about-hero {
+  --avatarSize: 1.1in;
+
+  @keyframes appear-left {
+    0% {
+      opacity: 0%;
+      transform: translate(calc(var(--avatarSize) * 0.5));
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(calc(var(--avatarSize) * 0.17));
+    }
+  }
+
+  @keyframes appear-right {
+    0% {
+      opacity: 0%;
+      transform: translate(calc(var(--avatarSize) * -0.5));
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(calc(var(--avatarSize) * -0.17));
+    }
+  }
+
+  height: 248px;
+  margin: 0 -.75in 0 -.75in;
+  background: url(/images/civil-war-trail-faded.webp);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .author-alter-ego {
+    width: var(--avatarSize);
+    height: var(--avatarSize);
+    animation: 1.0s cubic-bezier(0, 0.55, 0.45, 1) forwards appear-left;
+    border-radius: 100%;
+    user-select: none;
+    box-shadow: -3px 3px 10px black;
+  }
+
+  .author-real {
+    width: var(--avatarSize);
+    height: var(--avatarSize);
+    animation: 1.0s cubic-bezier(0, 0.55, 0.45, 1) forwards appear-right;
+    border-radius: 100%;
+    user-select: none;
+    box-shadow: -3px 3px 10px black;
+  }
+
+  .about-title {
+    color: white !important;
+    text-shadow: -3px 3px 10px black;
+  }
+}

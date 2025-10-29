@@ -1,0 +1,25 @@
+{{ define "main"}}
+
+{{ $alter_ego_img := .Site.Params.about.alterEgoAvatar }}
+{{ $alter_ego := resources.Get $alter_ego_img }}
+
+<div class="wrapper">
+
+  <div class="about-hero">
+    <div style="height: 40px;"></div>
+    <div class="avatars">
+      <img class="author-alter-ego" src="{{ $alter_ego.RelPermalink }}" />
+      <img class="author-real" src="{{ .Site.Params.about.avatar }}" />
+    </div>
+    <h2 class="about-title">{{ .Site.Params.about.title }}</h2>
+  </div>
+
+  <main class="main-about" aria-label="Content">
+    {{ partial "toc.html" .}}
+    <div class="page-content">
+      {{ .Content }}
+    </div>
+  </main>
+
+</div>
+{{ end }}
