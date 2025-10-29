@@ -1,7 +1,7 @@
 baseURL = 'https://elmfer.com/'
 languageCode = 'en-us'
 defaultContentLanguage = 'en-gb'
-title = 'ELMFER Blog'
+title = 'ELMFER'
 
 ############################## English language ################################
 [Languages.en-gb]
@@ -40,7 +40,7 @@ defaultColor = "dark" # set color mode: dark, light, auto
 # Setting it to 'auto' applies the color scheme based on the visitor's device color preference.If you don't specify anything, ignore this parameter, or leave it blank,
 # the default value is set to 'auto'.
 # You can take a look at layouts/index.html for more information.
-description = "Minimal Hugo blog theme with light and dark mode support"
+description = "Modified Hugo blog theme with light and dark mode support"
 toc = true                                                               # set to false to disable table of contents 'globally'
 tocOpen = false                                                          # set to true to open table of contents by default
 goToTop = true                                                           # set to false to disable 'go to top' button
@@ -59,9 +59,14 @@ rssFeedDescription = "summary" # available options: 1) summary 2) full
 [Languages.en-gb.params.author]
 avatar = "icons/mstile-310x310.png" # put the file in assets folder; also ensure that image has same height and width
 # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-intro = "Elmfer"
+intro = "ELMFER"
 name = "Fernando Valle"
-description = "A guy who is invested into engineering, led down a path of perpetual learning that cannot be stopped. Fixated on creating projects with unique twists, or even breaking stuff in the interest of figuring out what can be done."
+description = "Welcome to elmfer.com! I’m a guy who is invested into engineering, so I like to create projects using interesting tools and my own twists. Feel free to discover my posts and projects."
+
+[Languages.en-gb.params.about]
+alterEgoAvatar = "icons/mstile-310x310.png"
+avatar = "/images/fern.webp"
+title = "About ELMFER - Fernando Valle"
 
 # Allow to override webmanifest options
 [Languages.en-gb.params.webmanifest]
