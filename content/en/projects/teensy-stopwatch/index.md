@@ -1,7 +1,7 @@
 ---
 title: Teensy Stopwatch
 date: 2022-06-29T18:41:23-05:00
-draft: true
+draft: false
 description:
 thumbnail: "/projects/teensy-stopwatch/images/finished_device.webp"
 banner: "/projects/teensy-stopwatch/images/teensy_board_banner.webp"
