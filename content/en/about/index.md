@@ -13,7 +13,7 @@ learning. Because I learn a lot of new concepts and technologies, I became
 fixated on creating projects with my unique twists using interesting tools, or
 even breaking stuff in the interest of figuring out what can be done.
 
-### What I Do
+## What I Do
 
 My current primary focus is low level programming on embedded systems and
 graphics programming. Utilizing microcontrollers such as the ESP32 and Raspberry
