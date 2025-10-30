@@ -60,13 +60,18 @@ programming. Let me introduce them to you.
 
 ### CodeNode Microcontrollers -- Java/C++ Game Modding - Hardware Emulation
 
-An interactive learning platform in Minecraft for embedded systems and bare-metal
-assembly development on microcontrollers, utilizing a simulated 6502
+An interactive learning platform in Minecraft for embedded systems and bare-
+metal assembly development on microcontrollers, utilizing a simulated 6502
 processor with I/O peripherals, such as UART and interrupts. The platform
 positively impacted hundreds of learners through comprehensive documentation of
 the microcontroller's architecture, registers, peripherals, and address space.
 
 ![CodeNode Microcontrollers IDE](images/cnmcu-ide.webp)
+
+More information found in its official [Modrinth project
+page](https://modrinth.com/mod/cnmcu).
+
+---
 
 ### Engine Music -- Realtime Engine Simulator
 
@@ -76,6 +81,8 @@ OpenGL for visual feedback, and signal processing for audio.
 
 ![Engine Music VTWin](images/engmsc-vtwin.webp)
 
+---
+
 ### Parkour Recorder -- Java Minecraft Mod
 
 A quality-of-life mod for add recording and playback features in Minecraft using
@@ -83,6 +90,11 @@ Fabric mod loader, OpenGL for dynamic 3D/UI rendering, and animation techniques
 such as interpolations and easing.
 
 ![Parkour Recorder Timeline Screen](images/prmod-timeline-screen.webp)
+
+More information found in its official [CurseForge project
+page](https://www.curseforge.com/minecraft/mc-mods/parkour-recorder).
+
+---
 
 ### Teensy Stop Watch -- Embedded App Development
 
@@ -92,6 +104,10 @@ rendering, Python for font atlas generation, and EasyEDA for PCB design.
 
 ![Teensy Stopwatch Couting Time](images/teensy-running-stopwatch.webp)
 
+More information found in the [project's article](/projects/teensy-stopwatch).
+
+---
+
 ### Workbench Lighting System -- Embedded DC-DC Control
 
 A robust dual-channel workbench lighting system for optimal LED brightness
@@ -100,14 +116,21 @@ controls, and UART for remote monitoring.
 
 ![Workbench Lighting System](images/workbench-lighting-system.webp)
 
+More information found in the [project's article](/projects/project-workbench).
+
+---
+
 ### Workout Placita -- Fitness Tracker
 
-A fitness tracker app that allows a user to login and create their own personal
-workout profile. Within their profile, the user can select the type of workout
-they want to share and write a description about it. Front-end was created with
-React and ExpressJS for the backend server.
+In collaboration with my group at UT Austin coding-bootcamp, the fitness tracker
+app that allows a user to login and create their own personal workout profile.
+Within their profile, the user can select the type of workout they want to share
+and write a description about it. Front-end was created with React and ExpressJS
+for the backend server.
 
 ![Fitness Tracker Login Screen](images/fitness-tracker-login.webp)
+
+---
 
 ### Camera Motion Rig
 
@@ -118,6 +141,10 @@ using a remote that contains a screen and a joystick.
 
 ![Camera Rig](images/camera-rig.webp)
 
+More information found in the [project's article](/projects/camera-rig).
+
+---
+
 ### PSM -- Pitch Shift Music Browser Extension
 
 A small browser extension for Firefox that adds the ability to shift the pitch
@@ -125,6 +152,8 @@ of any YouTube video using vanilla Javascript. It enables "relistening" to music
 by hearing in a different key than usual.
 
 ![PSM Pitching Song Up](images/psm-upshifting.webp)
+
+---
 
 ### Neural Network Visualizer
 
@@ -134,6 +163,8 @@ rendering the network.
 
 ![Neural Network Visualizer](images/neural-network-visual.webp)
 
+---
+
 ### Minecraft World Saver
 
 In collaboration with my little brother, Minecraft World Saver is a desktop app
@@ -141,6 +172,8 @@ that serves to manage and automate backups of Minecraft worlds. It used RayLib
 for the app framework and Clay for computing the UI layout.
 
 ![World Saver World Backups](images/mws-list-backups.webp)
+
+---
 
 ### Hydroponics System Control Panel
 
@@ -150,3 +183,5 @@ commands, visualize the gantry, and use a gamepad for manual control. Created
 with C++ and OpenGL alongside a custom framework for drawing UI.
 
 ![Hydroponics HMI Panel](images/hydrop-hmi-panel.webp)
+
+The project's repository can be found on [GitHub](https://github.com/rgv-sare/hydroponic-control-panel).
