@@ -1,0 +1,47 @@
+<article class="post-item">
+
+  {{/* format date string to create an ISO 8601 string */}}
+  {{ $ISO_date := "2006-01-02T15:04:05Z0700" }}
+  {{ $configDateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
+
+    {{ if .Param "thumbnail" }}
+
+      <div class="post-item-header" style="flex-grow: 1; display: grid; align-items: flex-end;">
+        {{ if .Param "thumbnail" }}
+        <div class="post-item-thumbnail layer" style="background-image: url({{ .Param "thumbnail" }});">
+          <div style="background: linear-gradient(5deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);, width: 100%; height: 100%;">
+          </div>
+        </div>
+        <h4 class="post-item-title layer" style="display: flex; align-items: center; line-height: 1rem; margin: 1rem;">
+          {{ if .Params.isStarred }}
+          <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" class="icon-star"><path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path></svg>
+          </div>
+          {{ end }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h4>
+        <time class="post-item-meta layer" datetime="{{ dateFormat $ISO_date .Date }}" style="align-self: center; justify-self: end;">
+            {{ time.Format $configDateFormat .Date }}
+            {{/* OLD FORMAT: .Date.Format $configDateFormat */}}
+        </time>
+        {{ end }}
+      </div>
+
+    {{ else }}
+
+      <h4 class="post-item-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h4>
+
+      {{ if .Params.isStarred }}
+      <div class="post-item-right">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" class="icon-star"><path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path></svg>
+      </div>
+      {{ end }}
+      <time class="post-item-meta" datetime="{{ dateFormat $ISO_date .Date }}">
+          {{ time.Format $configDateFormat .Date }}
+          {{/* OLD FORMAT: .Date.Format $configDateFormat */}}
+      </time>
+
+    {{ end }}
+</article>

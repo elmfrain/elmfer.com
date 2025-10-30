@@ -1,0 +1,165 @@
+@mixin dark-mode {
+  body {
+    background-image: url("/images/background_lowc.webp");
+    background-color: hsl(0, 0, 18) !important;
+    background-blend-mode: multiply;
+  }
+}
+
+body {
+  background-image: url("/images/background.webp");
+  background-attachment: fixed;
+  background-color: hsl(0, 0, 95) !important;
+  background-size: 100vw;
+  image-rendering: pixelated;
+  background-blend-mode: soft-light;
+
+  * {
+    image-rendering: initial;
+  }
+}
+
+.elmfer-banner {
+  display: block;
+  width: 85px;
+  height: 25px;
+  background: url("/images/elmfer_banner8.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: optimizeQuality;
+}
+
+.header {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-banner {
+  margin: 0;
+  padding: 10em 1rem 1rem 1rem;
+  mask-image: linear-gradient(0deg, rgba(0,0,0,1) 63%, rgba(0,0,0,0) 100%);
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+
+  .header-title {
+    color: $dark-white;
+  }
+}
+
+@keyframes intro {
+  65%  { opacity: 100; }
+  100% { opacity: 0; }
+}
+
+.intro-vid {
+  background-color: $intro-gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  object-fit: cover;
+  object-position: center;
+
+  z-index: 1000;
+  pointer-events: none;
+
+  animation-name: intro;
+  animation-duration: 4.05s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@media (max-width: $narrow-size) {
+  .header-banner {
+    width: 100vw;
+    margin-left: -15px;
+  }
+}
+
+.layer {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+@media (max-width: 900px) {
+  body {
+    background-size: 900px;
+  }
+}
+
+// support JS disabled environment with media query
+@media (prefers-color-scheme: dark) {
+  // use "light" class to avoid style conflicts in js enabled environment
+  html:not(.light) {
+    @include dark-mode();
+  }
+}
+
+html.dark {
+  @include dark-mode();
+}
+
+// --------- about page specific style --------- //
+
+.about-hero {
+  --avatarSize: 1.1in;
+
+  @keyframes appear-left {
+    0% {
+      opacity: 0%;
+      transform: translate(calc(var(--avatarSize) * 0.5));
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(calc(var(--avatarSize) * 0.17));
+    }
+  }
+
+  @keyframes appear-right {
+    0% {
+      opacity: 0%;
+      transform: translate(calc(var(--avatarSize) * -0.5));
+    }
+    100% {
+      opacity: 100%;
+      transform: translate(calc(var(--avatarSize) * -0.17));
+    }
+  }
+
+  height: 248px;
+  margin: 0 -.75in 0 -.75in;
+  background: url(/images/civil-war-trail-faded.webp);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .author-alter-ego {
+    width: var(--avatarSize);
+    height: var(--avatarSize);
+    animation: 1.0s cubic-bezier(0, 0.55, 0.45, 1) forwards appear-left;
+    border-radius: 100%;
+    user-select: none;
+    box-shadow: -3px 3px 10px black;
+  }
+
+  .author-real {
+    width: var(--avatarSize);
+    height: var(--avatarSize);
+    animation: 1.0s cubic-bezier(0, 0.55, 0.45, 1) forwards appear-right;
+    border-radius: 100%;
+    user-select: none;
+    box-shadow: -3px 3px 10px black;
+  }
+
+  .about-title {
+    color: white !important;
+    text-shadow: -3px 3px 10px black;
+  }
+}
