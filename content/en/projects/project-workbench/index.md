@@ -198,14 +198,14 @@ working on the enclosure, I designed a 3D printed base for all the boards to mou
 with laying out the circuits, and it will determine the placement of all the components on the
 outside.
 
-![Circuitry Base in FreeCAD](./images/circuitry_base.png)
+![Circuitry Base in FreeCAD](./images/circuitry_base.webp)
 
 I measure the dimensions of the entire thing to figure out the smallest size of a box I could create
 while being able to fit everything inside. Since the boost and buck converters can get warm, I added
 ventilation vents near the place where they are going to be located. Lastly, I created cutout for
 all the components that are going to poke outside.
 
-![Enclosure in FreeCAD](./images/enclosure_cad.png)
+![Enclosure in FreeCAD](./images/enclosure_cad.webp)
 
 All that's left to do is to 3D print them using my Ender 3 printer. I used PLA plastic because it is
 the easiest material to work with when 3D printing since it doesn't require a high temperature nor
